@@ -65,9 +65,8 @@ public class AdminPage {
         System.out.println("Button add is clicked");
     }
 
-    public void searchWithUserName() throws InterruptedException {
-        wait.until(ExpectedConditions.visibilityOf(systemUserName)).sendKeys("Mohamed");
-//        Thread.sleep(10000);
+    public void searchWithUserName(String username) throws InterruptedException {
+        wait.until(ExpectedConditions.visibilityOf(systemUserName)).sendKeys(username);
     }
 
     public void clickDeleteIcon() throws InterruptedException {

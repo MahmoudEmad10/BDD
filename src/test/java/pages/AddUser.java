@@ -42,15 +42,15 @@ public class AddUser {
     @FindBy(xpath = "//button[@type='submit']")
     WebElement saveButton;
 
-    public void selectUserRole() throws InterruptedException {
+    public void selectUserRole(String role) throws InterruptedException {
         wait.until(ExpectedConditions.visibilityOf(userRoleDropDown)).click();
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='oxd-select-option']/span[text()='Admin']"))).click();
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='oxd-select-option']/span[text()='" + role + "']"))).click();
         System.out.println("Admin is selected");
     }
 
-    public void selectStatus() throws InterruptedException {
+    public void selectStatus(String status) throws InterruptedException {
         wait.until(ExpectedConditions.visibilityOf(statusDropDown)).click();
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='oxd-select-option']/span[text()='Enabled']"))).click();
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='oxd-select-option']/span[text()='" + status + "']"))).click();
         System.out.println("Status is selected");
     }
 
@@ -62,21 +62,21 @@ public class AddUser {
         Thread.sleep(1000);
     }
 
-    public void enterUsername() throws InterruptedException {
+    public void enterUsername(String username) throws InterruptedException {
         wait.until(ExpectedConditions.visibilityOf(userName)).click();
-        wait.until(ExpectedConditions.visibilityOf(userName)).sendKeys("Mohamed");
+        wait.until(ExpectedConditions.visibilityOf(userName)).sendKeys(username);
         Thread.sleep(3000);
     }
 
-    public void enterPassword() throws InterruptedException {
+    public void enterPassword(String Password) throws InterruptedException {
         wait.until(ExpectedConditions.visibilityOf(password)).click();
-        wait.until(ExpectedConditions.visibilityOf(password)).sendKeys("Test@1234");
+        wait.until(ExpectedConditions.visibilityOf(password)).sendKeys(Password);
         Thread.sleep(3000);
     }
 
-    public void enterConfirmPassword() throws InterruptedException {
+    public void enterConfirmPassword(String password) throws InterruptedException {
         wait.until(ExpectedConditions.visibilityOf(confirmPassword)).click();
-        wait.until(ExpectedConditions.visibilityOf(confirmPassword)).sendKeys("Test@1234");
+        wait.until(ExpectedConditions.visibilityOf(confirmPassword)).sendKeys(password);
         Thread.sleep(3000);
     }
 

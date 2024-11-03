@@ -43,17 +43,17 @@ public class AdminSteps {
         System.out.println("initialCount is : " + initialCount);
     }
 
-    @Then("user adds a new record")
-    public void user_adds_new_record() throws InterruptedException {
-        adminPage.clickAddButton();
-        addUser.selectUserRole();
-        addUser.selectStatus();
-        addUser.enterEmployeeName();
-        addUser.enterUsername();
-        addUser.enterPassword();
-        addUser.enterConfirmPassword();
-        addUser.clickOnSaveButton();
-    }
+//    @Then("user adds a new record with {} and {} and {} and {}")
+//    public void userAddsANewRecordWithAndAndAnd(String role, String status, String username, String password) throws InterruptedException {
+//        adminPage.clickAddButton();
+//        addUser.selectUserRole(role);
+//        addUser.selectStatus(status);
+//        addUser.enterEmployeeName();
+//        addUser.enterUsername(username);
+//        addUser.enterPassword(password);
+//        addUser.enterConfirmPassword(password);
+//        addUser.clickOnSaveButton();
+//    }
 
     @Then("the records count should increase by one")
     public void records_count_increase_by_one() throws InterruptedException {
@@ -63,9 +63,8 @@ public class AdminSteps {
     }
 
     @When("user search for the recently added record")
-    public void user_search_for_the_recently_added_record() throws InterruptedException {
-        adminPage.searchWithUserName();
-        addUser.clickOnSaveButton();
+    public void user_search_for_the_recently_added_record(String username) throws InterruptedException {
+
     }
 
     @When("user deletes the recently added record")
@@ -91,4 +90,21 @@ public class AdminSteps {
         Thread.sleep(5000);
     }
 
+    @Then("user adds a new record with {} and {} and {} and {}")
+    public void userAddsANewRecordWithAndAndAnd(String role, String status, String username, String password) throws InterruptedException {
+        adminPage.clickAddButton();
+        addUser.selectUserRole(role);
+        addUser.selectStatus(status);
+        addUser.enterEmployeeName();
+        addUser.enterUsername(username);
+        addUser.enterPassword(password);
+        addUser.enterConfirmPassword(password);
+        addUser.clickOnSaveButton();
+    }
+
+    @When("user search for the recently added {}")
+    public void userSearchForTheRecentlyAdded(String username) throws InterruptedException {
+        adminPage.searchWithUserName(username);
+        addUser.clickOnSaveButton();
+    }
 }
