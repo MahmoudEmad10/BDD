@@ -5,14 +5,12 @@ import io.cucumber.java.Before;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import pages.LoginPage;
 import util.ConfigReader;
 
 public class BaseTest {
     private static BaseTest instance;
     protected WebDriver driver;
     protected ConfigReader configReader;
-    protected LoginPage loginPage;
 
     public BaseTest() {
     }
@@ -27,14 +25,13 @@ public class BaseTest {
     @Before
     public void setUp() {
         configReader = new ConfigReader();
-        loginPage = new LoginPage(driver);
-        driver = BaseTest.getInstance().getDriver(configReader.getBrowserName());
+        driver = getInstance().getDriver(configReader.getBrowserName());
         driver.manage().window().maximize();
         driver.get(configReader.getBaseUrl());
     }
 
     @After
-    public void tearDown() {
+    public void tearDown() throws InterruptedException {
         if (driver != null) {
             driver.quit();
             driver = null;
@@ -43,13 +40,11 @@ public class BaseTest {
 
 
     public WebDriver getDriver(String browser) {
-        if (driver == null) {
-            if (browser.equalsIgnoreCase("chrome")) {
-                WebDriverManager.chromedriver().setup();
-                driver = new ChromeDriver();
-            } else {
-                throw new IllegalArgumentException("Unsupported browser: " + browser);
-            }
+        if (browser.equalsIgnoreCase("chrome")) {
+            WebDriverManager.chromedriver().setup();
+            driver = new ChromeDriver();
+        } else {
+            throw new IllegalArgumentException("Unsupported browser: " + browser);
         }
         return driver;
     }

@@ -43,18 +43,6 @@ public class AdminSteps {
         System.out.println("initialCount is : " + initialCount);
     }
 
-//    @Then("user adds a new record with {} and {} and {} and {}")
-//    public void userAddsANewRecordWithAndAndAnd(String role, String status, String username, String password) throws InterruptedException {
-//        adminPage.clickAddButton();
-//        addUser.selectUserRole(role);
-//        addUser.selectStatus(status);
-//        addUser.enterEmployeeName();
-//        addUser.enterUsername(username);
-//        addUser.enterPassword(password);
-//        addUser.enterConfirmPassword(password);
-//        addUser.clickOnSaveButton();
-//    }
-
     @Then("the records count should increase by one")
     public void records_count_increase_by_one() throws InterruptedException {
         int updatedCount = adminPage.getRecordsCount();
@@ -62,10 +50,6 @@ public class AdminSteps {
         System.out.println("Updated records count: " + updatedCount);
     }
 
-    @When("user search for the recently added record")
-    public void user_search_for_the_recently_added_record(String username) throws InterruptedException {
-
-    }
 
     @When("user deletes the recently added record")
     public void delete_recently_added_record() throws InterruptedException {
